@@ -1,0 +1,11 @@
+[mysqld]
+
+server_id=1
+
+slow_query_log=1
+
+long_query_time=3
+
+log_output=TABLE
+
+log_bin=/data/mysql/bin_log
