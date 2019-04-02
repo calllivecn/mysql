@@ -60,7 +60,7 @@ set GLOBAL slow_query_log=@old_log_state;
 python3 mysql-read-write-loop.py
 ```
 
-![mysql状态] (screenshots/2019-04-02 09-54-18.png  "mysql状态")
+![mysql状态](screenshots/2019-04-02 09-54-18.png  "mysql状态")
 
 
 mysql-read-write-loop.py:
