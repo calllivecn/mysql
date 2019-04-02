@@ -33,7 +33,7 @@ log_output=TABLE
 log_bin=/data/mysql/bin_log
 ```
 
-### 安全清除方案：
+### 安全清除方案（clear_slow_log_table.sql）：
 
 ```sql
 
@@ -55,10 +55,18 @@ set GLOBAL slow_query_log=@old_log_state;
 
 ### 写MySQL:
 
-用py持续写入时，测试安全清除slow_log表方案。
+用py持续写入时 和 执行select sleep(9)；测试安全清除slow_log表方案。
 ```shell
 python3 mysql-read-write-loop.py
 ```
+
+和
+
+```sql
+mysql> select sleep(9);
+```
+
+执行
 
 ```sql
 source ./clear_slow_log_table.sql
