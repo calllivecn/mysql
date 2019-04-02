@@ -80,6 +80,20 @@ select start_time,user_host,sql_text,query_time from slow_log order by query_tim
 ```
 ![](screenshots/2019-04-02-09-54-41.png)
 
+慢查询top10:
+```sql
+select avg(query_time) as avg_query_time, 
+	max(query_time) as max_time,
+	min(query_time) as min_time,
+	count(sql_text) as query_count,
+	sql_text,db from slow_log 
+	group by sql_text,db 
+	order by avg_query_time 
+	desc limit 10;
+```
+
+![](screenshots/2019-04-02-17-53-18.png)
+
 mysql-read-write-loop.py:
 ```python
 #!/usr/bin/env python3
