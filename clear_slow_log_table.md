@@ -60,8 +60,17 @@ set GLOBAL slow_query_log=@old_log_state;
 python3 mysql-read-write-loop.py
 ```
 
-![mysql状态](screenshots/2019-04-02 09-54-18.png  "mysql状态")
+```sql
+source ./clear_slow_log_table.sql
+```
 
+![](screenshots/2019-04-02-09-54-18.png) 
+
+慢查询：
+```sql
+select start_time,user_host,sql_text,query_time from slow_log order by query_time desc;
+```
+![](screenshots/2019-04-02-09-54-41.png)
 
 mysql-read-write-loop.py:
 ```python
