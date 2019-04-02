@@ -17,6 +17,7 @@ parse.add_argument("-u", "--user", action="store", default="root",help="connect 
 parse.add_argument("-p", "--password", action="store", default=None, help="connect username")
 parse.add_argument("-P", "--port", action="store", default=3306, help="connect host port")
 parse.add_argument("-D", "--database", action="store", default=None, help="connect mysql db")
+parse.add_argument("-T", "--time", action="store",type=float, default=60, help="connect mysql db")
 
 args = parse.parse_args()
 print(args)
@@ -38,8 +39,10 @@ cursor = con.cursor()
 
 cursor.execute("create table if not exists test(id int primary key auto_increment, random int);")
 
+T = args.time
+
 t = 0
-while t <= 60:
+while t <= T:
     start = time.time()
     for _ in range(50):
         i = randint(0, 50000)
