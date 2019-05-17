@@ -14,12 +14,20 @@ use mysql;
 
 set @old_log_state=@@GLOBAL.slow_query_log;
 
+drop table if exists slow_log3;
+
+drop table if exists slow_log_tmp;
+
+create table if not exists slow_log_tmp like slow_log;
+create table if not exists slow_log1 like slow_log;
+create table if not exists slow_log2 like slow_log;
+
+
 set GLOBAL slow_query_log=0;
 
-drop table if exists slow_log1;
-
-create table slow_log_tmp like slow_log;
-
-rename table slow_log to slow_log1, slow_log_tmp to slow_log;
+rename table slow_log2 to slow_log3;
+rename table slow_log1 to slow_log2;
+rename table slow_log to slow_log1;
+rename table slow_log_tmp to slow_log;
 
 set GLOBAL slow_query_log=@old_log_state;
