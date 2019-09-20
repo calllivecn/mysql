@@ -69,7 +69,7 @@ log-slave-updates=1
 binlog_format=row      #强烈建议，其他格式可能造成数据不一致
 
 #relay log
-skip_slave_start=1
+skip_slave_start=1     #所有slave需要加上skip_slave_start=1的配置参数，避免启动后还是使用老的复制协议。
 ```
 
 ### 六、配置基于GTID的复制
